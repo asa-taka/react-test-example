@@ -1,19 +1,19 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 import List from './List';
 
-let root
-beforeEach(() => {
-  root = document.createElement('div')
-})
+const render = Component => {
+  ReactDOM.render(Component, document.createElement('div'))
+}
 
 it('renders without crashing', () => {
-  ReactDOM.render(<List />, root)
+  render(<List />)
 })
 
 it('renders without crashing', () => {
   const items = [1, 2, 3]
-  ReactDOM.render(<List items={items}/>, root)
+  render(<List items={items} />)
 })
 
 it('renders without crashing', () => {
@@ -21,7 +21,14 @@ it('renders without crashing', () => {
     { id: 1, name: 'item-a', contents: 'first-item' },
     { id: 2, name: 'item-b', contents: 'second-item' },
   ]
-  const value = e => e.name
-  const props = { items, value }
-  ReactDOM.render(<List {...props}/>, root)
+  render(<List items={items} value={e => e.name} />)
+})
+
+it('renders without crashing', () => {
+  type Item = { id: number, name: string, contents: string }
+  const items: Item[] = [
+    { id: 1, name: 'item-a', contents: 'first-item' },
+    { id: 2, name: 'item-b', contents: 'second-item' },
+  ]
+  render(<List items={items} value={e => e.name} />)
 })

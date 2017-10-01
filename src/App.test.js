@@ -2,7 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
+const render = Component => {
+  ReactDOM.render(Component, document.createElement('div'))
+}
+
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<App />, div)
+  render(<App />)
 });

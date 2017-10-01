@@ -3,11 +3,11 @@ import * as React from 'react'
 
 type Props = {
   title: string,
-  children: React.Node,
+  children?: React.Node,
   num: number,
 }
 
-function Title(props: Props) {
+const Title = (props: Props) => {
   const { title, children, num } = props
   return (
     <div className="title">
