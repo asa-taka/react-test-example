@@ -1,6 +1,13 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 
-const List = props => {
+type Props<E> = {
+  items: E[],
+  itemKey: (E, ?number) => string,
+  value: (E, ?number) => React.Node,
+}
+
+const List = <E>(props: Props<E>) => {
   const { items, itemKey, value } = props
   return (
     <ul>
@@ -14,7 +21,7 @@ const List = props => {
 List.defaultProps = {
   items: [],
   itemKey: (e, i) => i,
-  value: e => e,
+  value: (e, i) => e,
 }
 
 export default List

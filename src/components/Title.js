@@ -1,17 +1,24 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 
-const Title = props => {
-  const { title, children } = props
+type Props = {
+  title: string,
+  children: React.Node,
+  num: number,
+}
+
+function Title(props: Props) {
+  const { title, children, num } = props
   return (
     <div className="title">
-      <div>{title}</div>
-      {children}
+      <span>#{num}: {title}</span>{children}
     </div>
   )
 }
 
 Title.defaultProps = {
-  title: ''
+  title: 'some-string',
+  num: 12,
 }
 
 export default Title
